@@ -3,326 +3,312 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Kulatish · Between Symbols</title>
+<title>Kulatish &middot; Between Symbols</title>
 <style>
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
   :root{
-    --bg:#fbf7f0; --card:#fffcf8; --ink:#2c2416; --gold:#8b6914;
-    --deep:#6f4f0a; --light-gold:#e8dcc8; --fade:#7a705a; --line:#e0d5c0;
+    --bg:#fbf7f0; --card:#fffcf8; --paper:#fffbf7; --ink:#3e362e; --soft:#5f5549;
+    --gold:#8b6914; --deep:#6f4f0a; --light-gold:#e8dcc8; --lgold:#e3d6c4; --mgold:#d9cdb8;
+    --line:#e0d5c0; --ph:#eceae4; --fade:#7a705a; --bar:#8b6914;
   }
-  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-    background:var(--bg);color:var(--ink);line-height:1.6;scroll-behavior:smooth;}
-  a{color:inherit;text-decoration:none;} img{max-width:100%;display:block;}
-  .container{max-width:1020px;margin:0 auto;padding:0 22px;}
+  body{font-family:'Georgia','Times New Roman',serif;
+    background:var(--bg);color:var(--ink);line-height:1.66;scroll-behavior:smooth;}
+  a{color:var(--deep);text-decoration:none;}
+  img,video{display:block;}
+  .container{max-width:1040px;margin:0 auto;padding:0 22px;}
 
-  nav{position:sticky;top:0;z-index:200;background:var(--gold);
-    border-bottom:2px solid var(--deep);padding:0;}
-  nav .inner{max-width:1020px;margin:0 auto;padding:10px 22px;
-    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
-  nav .logo{font-weight:800;font-size:1.2rem;letter-spacing:.03em;color:#fff;}
-  nav ul{list-style:none;display:flex;gap:6px;flex-wrap:wrap;}
-  nav ul li a{font-size:.83rem;color:#fbf3e0;padding:6px 12px;border-radius:999px;transition:.2s;}
-  nav ul li a:hover{background:var(--deep);color:#fff;}
+  /* ===== NAV ===== */
+  nav{position:sticky;top:0;z-index:200;background:var(--bar);
+    border-bottom:2px solid #6f4f0a;box-shadow:0 6px 22px -12px rgba(46,32,8,.55);}
+  nav .inner{max-width:1040px;margin:0 auto;padding:10px 22px;}
+  nav ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:space-evenly;align-items:center;gap:6px 18px;}
+  nav ul a{font-size:.9rem;font-weight:400;letter-spacing:.02em;padding:3px 2px;color:#fff;border-bottom:1px solid transparent;transition:.2s;}
+  nav ul a:hover{color:#fff2cf;border-bottom-color:#fff2cf;background:none;}
+  @media(max-width:560px){nav ul{gap:4px 14px;}nav ul a{font-size:.8rem;}}
 
-  section{padding:56px 0;position:relative;}
+  section{padding:52px 0;border-top:1px solid var(--line);scroll-margin-top:78px;position:relative;}
   section::after{content:'';display:block;width:80%;height:2px;
     background:linear-gradient(90deg,transparent,var(--light-gold),transparent);
     margin:0 auto;position:absolute;bottom:0;left:10%;}
   section:last-of-type::after{display:none;}
+  .sec-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:12px;}
+  .sec-head h2{font-size:1.75rem;font-weight:500;margin:0;color:var(--deep);}
+  .sec-head .sub{font-size:.83rem;color:var(--fade);font-style:italic;}
+  .eyebrow{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:6px;}
 
-  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:22px;
-    border-bottom:2px solid var(--gold);padding-bottom:10px;}
-  .sec-head h2{font-size:1.55rem;font-weight:700;letter-spacing:-.02em;color:var(--deep);}
-  .sec-head .sub{font-size:.84rem;color:var(--fade);}
+  /* ===== HERO ===== */
+  .hero{padding:40px 0 30px;text-align:center;}
+  h1{font-size:clamp(2.89rem,9.35vw,5.78rem);font-weight:1000;letter-spacing:-.055em;line-height:.94;color:var(--bar);margin:0 0 18px;}
 
-  /* ===== HERO (tightened) ===== */
-  .hero{padding:70px 0 44px;text-align:center;}
-  .hero h1{font-size:5.6rem;font-weight:800;letter-spacing:-.05em;line-height:.95;color:var(--gold);}
-  .hero .sub{margin-top:20px;min-height:auto;}
-  .hero .sub .blank{
-    display:block;width:100%;min-height:74px;border:none;background:transparent;
-    font-family:inherit;font-size:1.08rem;color:var(--ink);text-align:center;
-    resize:vertical;outline:none;line-height:1.7;
-    background-image:linear-gradient(to bottom,transparent 94%,var(--light-gold) 94%);
-    background-size:100% 1.7em;padding:0 10%;
-  }
-  .hero .sub .blank::placeholder{color:#c2b8a6;font-style:italic;}
-
-  /* create / research / perform */
   .triplet{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px;}
-  .tri-card{background:var(--card);border:1px solid var(--light-gold);border-radius:14px;
-    padding:20px 18px;transition:.2s;}
-  .tri-card:hover{border-color:var(--gold);transform:translateY(-3px);}
-  .tri-card .ico{font-size:1.5rem;margin-bottom:8px;}
-  .tri-card h4{font-size:1rem;font-weight:680;color:var(--deep);margin-bottom:5px;}
-  .tri-card p{font-size:.83rem;color:var(--fade);line-height:1.55;}
+  .tri-card{background:var(--paper);border:1px solid var(--light-gold);border-radius:14px;padding:20px 18px;transition:.25s;display:flex;flex-direction:column;}
+  .tri-card:hover{transform:translateY(-3px);box-shadow:0 10px 26px -14px rgba(111,79,10,.45);border-color:var(--mgold);}
+  .tri-card .ico{font-size:1.5rem;color:var(--gold);}
+  .tri-card h4{margin:.35rem 0 .25rem;font-size:1.02rem;font-weight:600;color:var(--deep);text-align:center;}
+  .tri-card p{font-size:.85rem;color:var(--soft);margin:0 0 8px;line-height:1.6;text-align:left;}
+  .tri-card .tags{font-size:.68rem;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;margin-top:auto;text-align:left;}
 
-  .pdf-chip{display:inline-flex;align-items:center;gap:8px;margin:0 10px 14px 0;
-    padding:9px 20px;border:1.5px solid var(--gold);border-radius:999px;
-    font-size:.84rem;color:var(--deep);background:#fffcf4;transition:.2s;font-weight:500;}
-  .pdf-chip:hover{background:var(--gold);color:#fff;}
-  .pdf-chip .ico{font-size:1rem;}
+  /* ===== FIGURES (single source of truth) ===== */
+  .art{position:relative;overflow:hidden;border-radius:10px;background:var(--ph);
+    box-shadow:0 3px 14px -10px rgba(90,66,40,.35);margin-left:auto;margin-right:auto;}
+  .art>img,.art>video{width:100%;height:100%;object-fit:cover;display:block;}
+  .art.sq,.art.pcard,.art.cert-fig{aspect-ratio:1/1;}
+  .art.wd,.art.vid{aspect-ratio:16/9;}
+  .stage-fig.poster,.cert-fig,.art.cert-fig{poster:auto;aspect-ratio:3/4 !important;}
+  .stage-fig.show{aspect-ratio:4/3;}
+  .art{max-height:44vh;}
+  .art.sq,.art.pcard{max-height:26vh;min-height:110px;}
+  .art.wd,.art.vid{max-height:34vh;min-height:140px;}
+  .stage-fig,.cert-fig{max-height:none;}
+  .stage-fig.poster,.cert-fig{max-height:58vh;}
+  .stage-fig.show{max-height:34vh;}
+  /* contain for portraits / posters / certs -- never cropped */
+  .stage-fig.poster img,.stage-fig.poster .ph,
+  .cert-fig img,.cert-fig .ph,.art.cert-fig img{object-fit:contain;background:#f6f3ee;}
+  .art .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    font-size:clamp(1.6rem,5vw,2.8rem);color:#b6a58b;line-height:1.2;text-align:center;padding:18px;z-index:2;}
+  .art .ph small{display:block;margin-top:9px;font-size:.68rem;letter-spacing:.04em;opacity:.85;word-break:break-all;}
+  .cap{font-size:.86rem;color:var(--soft);line-height:1.62;margin-top:9px;}
+  .cap b{color:var(--ink);}
+  .cap em{color:var(--deep);}
 
-  .wv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-  .wv-card{background:var(--card);border:1px solid var(--light-gold);border-radius:14px;overflow:hidden;}
-  .wv-summary{padding:18px 16px;cursor:pointer;font-size:.92rem;font-weight:540;line-height:1.42;
-    display:flex;gap:10px;align-items:flex-start;}
-  .wv-summary .num{font-size:.72rem;color:#fff;font-weight:700;background:var(--gold);
-    border-radius:6px;padding:1px 6px;margin-top:3px;flex:none;}
-  .wv-summary::after{content:"+";margin-left:auto;color:var(--gold);font-weight:500;flex:none;}
-  .wv-toggle{display:none;}
-  .wv-toggle:checked + .wv-summary::after{content:"–";}
-  .wv-body{max-height:0;overflow:hidden;transition:max-height .35s ease;padding:0 16px;
-    font-size:.86rem;color:#4a4236;font-style:italic;line-height:1.62;background:#fdfcfa;}
-  .wv-toggle:checked + .wv-summary + .wv-body{max-height:520px;padding:4px 16px 20px;}
-  .wv-body p{margin-bottom:8px;}
-  .wv-body .src{display:block;margin-top:8px;font-size:.73rem;color:#a8a29a;font-style:normal;
-    border-top:1px dashed var(--light-gold);padding-top:7px;}
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+  figure.pcard,figure.mline{margin:0;}
+  figure.pcard figcaption,figure.mline figcaption{font-size:.86rem;color:var(--soft);line-height:1.6;margin-top:9px;}
+  figure.pcard figcaption b,figure.mline figcaption b{color:var(--ink);}
+  .mline{display:flex;flex-direction:column;height:100%;}
+  .mline figure{flex:1 1 0;min-width:0;}
+  .mline .art{width:100%;max-height:none !important;aspect-ratio:1/1 !important;margin:0 0 8px;border-radius:10px;}
+  .mline .art img{width:100%;height:100%;object-fit:cover;}
+  .mline figcaption,.mline .cap{text-align:center;}
+  @media(min-width:861px){
+    .grid5.g5-metro{grid-template-columns:repeat(5,1fr);gap:14px;}
+    .mline .art{max-height:150px;}
+  }
+  @media(max-width:860px){
+    .pair,.grid3,.grid5{grid-template-columns:repeat(2,1fr);}
+    .triplet{grid-template-columns:1fr;}
+    .mline .art{max-height:min(34vw,180px);}
+  }
+  @media(max-width:540px){
+    .grid3,.grid5{grid-template-columns:1fr;}
+    .mline .art{max-height:min(44vw,180px);}
+    .cap,figure.mline figcaption{font-size:.8rem;}
+  }
 
-  .proj{background:var(--card);border:1px solid var(--light-gold);border-radius:18px;padding:30px 28px;margin-bottom:26px;}
-  .proj-title-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
-  .proj-title-row h3{font-size:1.28rem;font-weight:640;color:var(--ink);}
-  .proj-title-row .back{margin-left:auto;font-size:.76rem;color:var(--gold);border:1px solid var(--light-gold);
-    border-radius:999px;padding:3px 12px;transition:.2s;white-space:nowrap;}
-  .proj-title-row .back:hover{background:var(--gold);color:#fff;border-color:var(--gold);}
-  .proj .meta{font-size:.78rem;color:var(--gold);margin-bottom:14px;display:flex;gap:10px;flex-wrap:wrap;}
-  .proj .meta span{background:#f4efe4;padding:2px 9px;border-radius:4px;}
+  /* ===== ANCIENT (two up, sized to fit, no crop) ===== */
+  .ancient-figures{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start;}
+  .ancient-figures .af{display:flex;flex-direction:column;gap:9px;}
+  .ancient-figures figure .art{width:100%;max-height:none;aspect-ratio:4/3;min-height:200px;}
+  .ancient-figures figure .art img{object-fit:contain;background:#f4efe4;}
+  .ancient-figures .cap{text-align:center;font-size:.86rem;line-height:1.6;color:var(--soft);margin-top:8px;}
+  @media(max-width:860px){.ancient-figures{grid-template-columns:1fr;gap:20px;}.ancient-figures figure .art{min-height:170px;}}
 
-  .field{margin-top:14px;}
-  .field .label{font-weight:700;font-size:.8rem;color:var(--deep);display:block;margin-bottom:4px;
-    border-left:3px solid var(--gold);padding-left:10px;text-transform:uppercase;letter-spacing:.04em;}
-  .field .content{font-size:.92rem;color:#3d3528;line-height:1.65;margin-bottom:8px;}
+  /* ===== BLOCKS ===== */
+  .proj{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 24px;margin-top:18px;}
+  .proj-title-row{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+  .proj-title-row h3{margin:0;font-size:1.3rem;font-weight:550;color:var(--ink);}
+  .back{font-size:.78rem;color:var(--gold);text-decoration:none;}
+  .meta{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 16px;}
+  .meta span{background:#f0e7d8;color:var(--deep);font-size:.74rem;padding:3px 11px;border-radius:99px;}
+  .origin,.field{background:#fbf9f4;border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:10px;padding:14px 18px;margin-top:14px;}
+  .origin .lbl,.field .label{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+  .field .content{font-size:.9rem;color:#4a4236;line-height:1.66;}
+  .steps{display:grid;gap:9px;}
+  .st{background:#fff;border:1px solid var(--line);border-radius:8px;padding:9px 13px;font-size:.87rem;color:#4a4236;line-height:1.55;}
+  .st b{color:var(--deep);}
+  .priv{font-size:.84rem;color:var(--soft);font-style:italic;margin-top:14px;padding:8px 0 0;border-top:1px dashed var(--line);line-height:1.6;}
+  .pull{font-size:1.06rem;line-height:1.6;color:#2b241d;text-align:center;max-width:38em;margin:22px auto 10px;
+    padding:16px 18px;border-top:1px solid var(--lgold);border-bottom:1px solid var(--lgold);font-style:italic;}
+  .pull small{display:block;font-size:.76rem;color:var(--gold);letter-spacing:.06em;font-style:normal;margin-top:9px;text-transform:uppercase;}
 
-  .origin{background:#f7f2e8;border-left:3px solid var(--gold);border-radius:0 8px 8px 0;
-    padding:13px 16px;font-size:.88rem;color:#52422a;margin-bottom:16px;line-height:1.6;}
-  .origin .lbl{display:block;font-weight:700;color:var(--deep);font-size:.76rem;margin-bottom:3px;
-    text-transform:uppercase;letter-spacing:.05em;font-style:normal;}
+  .wwn{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 18px;margin:18px 0 4px;}
+  .wwnsingle .w,.wwn .w{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:12px 15px;}
+  .wwnsingle .w{margin:0;}
+  .wn{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+  .w p{margin:0;font-size:.9rem;color:#4a4236;line-height:1.66;}
+  @media(max-width:720px){.wwn{grid-template-columns:1fr;}}
 
-  .subnav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px;}
-  .subnav a{font-size:.8rem;padding:7px 15px;border:1.5px solid var(--gold);border-radius:999px;
-    color:var(--deep);background:#fffcf4;transition:.2s;font-weight:500;}
-  .subnav a:hover{background:var(--gold);color:#fff;}
+  .lr{display:grid;grid-template-columns:minmax(0,1fr) 1.15fr;gap:24px;align-items:center;margin-top:22px;}
+  .lr.rev{grid-template-columns:1.15fr minmax(0,1fr);}
+  .lr.rev .art{order:2;}
+  @media(max-width:860px){.lr,.lr.rev{grid-template-columns:1fr;}.lr.rev .art{order:0;}}
+  .lead{font-size:1.02rem;color:var(--ink);margin:0 0 9px;}
+  .tag{display:inline-block;background:#f0e7d8;color:var(--deep);font-size:.72rem;padding:2px 10px;border-radius:99px;margin:2px 4px 2px 0;}
 
-  .media{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0;}
-  .mb{background:#efefef;border-radius:10px;overflow:hidden;}
-  .mb img,.mb video{width:100%;height:160px;object-fit:cover;}
-  .mb .cap{font-size:.71rem;color:#8a8a8a;padding:6px 8px;background:#f6f6f6;line-height:1.35;}
-  .priv{font-size:.77rem;color:var(--deep);background:#fbf7ee;padding:8px 12px;border-radius:7px;margin-top:6px;
-    border:1px solid var(--light-gold);}
+  .subnav{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:#f6efe4;border:1px solid var(--line);border-radius:12px;padding:8px;margin-top:14px;}
+  .subnav-a{display:block;text-align:center;font-size:.86rem;color:var(--deep);text-decoration:none;padding:9px 6px;border-radius:9px;font-weight:600;letter-spacing:.03em;transition:.18s;}
+  .subnav-a:hover,.subnav-a.on{background:var(--bar);color:#fff;}
 
-  /* ===== GRAMMAR : native <details> ===== */
-  .grammar-head{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:18px 0 4px;}
-  .grammar-head .btn-group{display:flex;gap:10px;align-items:center;}
-  .grammar-toggle-all-btn{padding:9px 22px;background:var(--gold);color:#fff;
-    border-radius:999px;font-size:.85rem;cursor:pointer;transition:.2s;font-weight:600;border:none;}
-  .grammar-toggle-all-btn:hover{background:var(--deep);}
-  .grammar-head .pdf-chip{margin:0;}
+  /* ===== GRAMMAR ===== */
+  .g-card{border:2px solid var(--gold);border-radius:14px;overflow:hidden;margin-top:22px;background:var(--paper);
+    box-shadow:0 10px 30px -18px rgba(111,79,10,.5);}
+  .g-card>summary{list-style:none;cursor:pointer;padding:16px 20px;background:linear-gradient(180deg,#fbf3e4,#fffbf7);
+    font-size:1.02rem;font-weight:600;color:#5a441f;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+  .g-card>summary::-webkit-details-marker{display:none;}
+  .g-card>summary .hint{font-size:.76rem;font-weight:400;color:var(--deep);letter-spacing:.01em;}
+  .g-card>summary .arw{color:var(--gold);transition:.2s;}
+  .g-card[open]>summary .arw{transform:rotate(180deg);}
+  .chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:11px;}
+  .ch{border:1px solid var(--line);border-radius:9px;padding:11px 13px;background:#fff;font-size:.86rem;color:#4a4236;}
+  .ch b{display:block;color:var(--ink);font-size:.88rem;margin-bottom:3px;}
+  .ch span{color:var(--soft);font-size:.83rem;}
+  .ch.star{border-color:var(--gold);background:linear-gradient(180deg,#fdf6ec,#fffbf7);}
+  .ch.star em{color:var(--deep);font-style:italic;}
 
-  .grammar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding-top:14px;}
-  .g-card{background:#fff;border:1px solid var(--light-gold);border-radius:12px;overflow:hidden;}
-  .g-card details{display:block;}
-  .g-card summary{padding:12px 10px;cursor:pointer;font-size:.8rem;font-weight:560;
-    background:#fcf9f2;border-bottom:1px solid var(--light-gold);transition:.2s;line-height:1.3;
-    list-style:none;position:relative;}
-  .g-card summary::-webkit-details-marker{display:none;}
-  .g-card summary::after{content:" +";float:right;color:var(--gold);}
-  .g-card details[open] summary::after{content:" –";}
-  .g-card .g-body{padding:10px;font-size:.78rem;color:#4a4236;line-height:1.58;}
+  /* ===== PERSONIFIED ===== */
+  .pw-block+.pw-block{margin-top:30px;}
+  .pw-main{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:30px 0 12px;}
+  .pw-main h3{font-size:1.3rem;font-weight:550;color:var(--ink);margin:0;letter-spacing:-.01em;}
+  .pw-main .sub{font-size:.83rem;color:var(--fade);font-style:italic;}
+  .pw-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:18px 0 4px;}
+  .pw-h .pw-n{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);flex:none;}
+  .pw-h h3{font-size:1.05rem;font-weight:500;color:var(--soft);margin:0;letter-spacing:0;}
+  .pw-h .pw-sub{font-size:.8rem;color:var(--fade);font-style:italic;}
+  .pw-intro{font-size:.9rem;color:var(--soft);max-width:52em;margin:6px 0 4px;}
+  .pw-block > .pw-intro{color:var(--soft);font-size:.9rem;margin:8px 0 10px;}
+  .pw-block .cap, .pw-block figure figcaption, .pw-block .field .content, .pw-block p{color:var(--soft);}
+  .pw-block .cap b, .pw-block figcaption b{color:var(--ink);}
+  .stage-grid figure figcaption b{color:var(--ink);font-weight:600;}
+  .stage-grid figure figcaption{color:var(--soft);}
+  .chem-text p{color:#4a4236;}
 
-  .ancient{margin-top:22px;background:linear-gradient(180deg,#f7f1e2,#fdfbf5);
-    border:1px solid var(--light-gold);border-radius:14px;padding:20px 22px;}
-  .ancient h4{font-size:.92rem;font-weight:700;color:var(--deep);margin-bottom:8px;
-    display:flex;align-items:center;gap:8px;}
-  .ancient h4 .glyph{font-size:1.2rem;color:var(--gold);}
-  .ancient p{font-size:.87rem;color:#4a4236;line-height:1.66;margin-bottom:10px;}
-  .ancient .term{font-weight:650;color:var(--deep);font-style:italic;}
-  .ancient .media{margin-top:12px;}
+  /* ===== STAGE ===== */
+  .poster-row{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:20px;}
+  .poster-card{margin:0;}
+  .poster-card .art{width:100%;}
+  .poster-card figcaption{display:none;}
+  .stage-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:20px;}
+  .stage-grid figure .art{aspect-ratio:4/3;width:100%;}
+  .stage-grid figure figcaption{text-align:center;font-size:.84rem;color:var(--soft);margin-top:8px;line-height:1.5;}
+  .stage-grid figure figcaption b{color:var(--ink);}
+  @media(max-width:860px){.stage-grid{grid-template-columns:repeat(2,1fr);}.poster-row{grid-template-columns:1fr;}}
+  @media(max-width:520px){.stage-grid{grid-template-columns:1fr;}}
+  .stage-caption{font-size:.88rem;color:var(--soft);margin-top:16px;max-width:52em;line-height:1.66;}
 
-  /* ===== LR layout (left text / right image) ===== */
-  .lr{display:grid;grid-template-columns:minmax(260px,38%) 1fr;gap:24px;align-items:start;margin-top:16px;}
-  .lr .art{background:#eceae4;border-radius:12px;overflow:hidden;}
-  .lr .art img{width:100%;height:330px;object-fit:cover;display:block;}
-  .lr .art .ph{width:100%;height:330px;display:flex;align-items:center;justify-content:center;
-    font-size:2.2rem;color:#c3b9a5;background:#eceae4;}
-  .lr .txt{font-size:.9rem;color:#3d3528;line-height:1.66;}
-  .lr .txt p{margin-bottom:10px;}
-  .lr .txt .lead{font-weight:600;color:var(--deep);}
-
-  /* metro slider inside lr */
-  .slider{position:relative;background:#eae4d8;border-radius:12px;overflow:hidden;}
-  .slider .main-img{width:100%;height:330px;object-fit:cover;display:block;}
-  .slider-controls{display:flex;justify-content:center;align-items:center;gap:14px;padding:9px 0;background:#f6f1e7;}
-  .slider-controls button{background:var(--gold);color:#fff;border:none;border-radius:999px;padding:6px 18px;
-    cursor:pointer;font-size:.78rem;font-weight:600;}
-  .slider-controls button:hover{background:var(--deep);}
-  .slider-controls .counter{font-size:.78rem;color:var(--fade);}
-  .upload-btn{display:inline-block;margin:8px 0 0;padding:6px 16px;border:1.5px dashed var(--gold);
-    border-radius:999px;color:var(--deep);font-size:.76rem;cursor:pointer;background:transparent;font-weight:500;}
-  .upload-btn:hover{background:var(--gold);color:#fff;}
-  #fileInput{display:none;}
-
-  /* punctuation */
-  .punc-feat{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px;}
-  .pc-big{border:1px solid var(--light-gold);border-radius:14px;overflow:hidden;background:var(--card);}
-  .pc-big .sketch{width:100%;height:150px;background:#f0ece4;display:flex;align-items:center;justify-content:center;
-    font-size:2.4rem;color:#b8ad97;}
-  .pc-big .sketch img{width:100%;height:150px;object-fit:cover;}
-  .pc-big .nm{font-weight:680;font-size:.9rem;color:var(--deep);text-align:center;margin-top:10px;}
-  .pc-big .en{font-size:.78rem;color:#6a6a6a;font-style:italic;text-align:center;padding:2px 12px 14px;line-height:1.4;}
-
-  .more-wrap{margin-top:18px;border:1px dashed var(--gold);border-radius:12px;overflow:hidden;}
-  .more-toggle{display:none;}
-  .more-label{display:block;padding:11px 18px;cursor:pointer;font-size:.84rem;font-weight:600;color:var(--deep);
-    background:#fbf3e0;text-align:center;}
-  .more-label::after{content:" ▸ show 33 more";color:var(--gold);font-weight:500;}
-  .more-toggle:checked + .more-label::after{content:" ▾ collapse";}
-  .more-body{max-height:0;overflow:hidden;transition:max-height .45s ease;padding:0 14px;}
-  .more-toggle:checked + .more-label + .more-body{max-height:2800px;padding:14px;}
-  .prow{display:grid;gap:8px;margin-bottom:8px;}
-  .prow.r2,.prow.r3,.prow.r4{grid-template-columns:repeat(12,1fr);}
-  .pc{border:1px solid var(--light-gold);border-radius:10px;padding:9px 6px;text-align:center;background:var(--card);}
-  .pc .nm{font-weight:640;font-size:.76rem;color:var(--deep);}
-  .pc .en{font-size:.67rem;color:#7a7a7a;line-height:1.3;font-style:italic;margin-top:1px;}
-  .pnote{margin-top:14px;padding:10px 16px;background:#f7f2e8;border-radius:9px;border:1px solid var(--light-gold);
-    font-style:italic;font-size:.82rem;color:#6b5c42;text-align:center;}
-
-  /* theatre 5 images */
-  .stage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;}
-  .stage-grid .mb img,.stage-grid .mb video{height:180px;}
-  .stage-below{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px;}
-  .stage-intro{font-size:.93rem;color:#3d3528;line-height:1.68;margin:12px 0 8px;}
-  .stage-caption{font-size:.81rem;color:#5a4e3c;line-height:1.52;margin:6px 0;}
-
-  /* novella */
-  .novella-text{font-size:.91rem;color:#3d3528;line-height:1.64;}
-  .wechat-mini{margin-top:14px;padding:10px 14px;border-left:3px solid var(--light-gold);
-    font-size:.84rem;color:#5a5042;line-height:1.54;}
+  /* ===== NOVELLA ===== */
+  .novella-text{font-size:.91rem;color:#3d3528;line-height:1.66;}
+  .wechat-mini{margin-top:12px;padding:10px 16px;border-left:3px solid var(--light-gold);font-size:.9rem;color:#4a4236;line-height:1.6;}
   .wechat-mini strong{color:var(--deep);}
   .wechat-mini .cnt{color:var(--gold);font-weight:600;}
 
-  /* about */
-  .abt{display:flex;flex-wrap:wrap;gap:34px;align-items:stretch;}
-  .abt-l{flex:1 1 360px;display:flex;flex-direction:row;gap:14px;}
-  .abt-l .cert{flex:1;background:#e8e4da;border-radius:10px;height:180px;overflow:hidden;
-    display:flex;align-items:center;justify-content:center;color:#a39a89;font-size:.74rem;text-align:center;}
-  .abt-l .cert img{width:100%;height:100%;object-fit:cover;}
-  .abt-r{flex:2 1 340px;display:flex;flex-direction:column;justify-content:space-between;}
-  .abt-r .bio p{margin-bottom:10px;font-size:.90rem;color:#3d3528;line-height:1.62;}
-  .course-grid{display:flex;gap:20px;margin:14px 0;}
-  .course-col{flex:1;background:#f4efe4;border-radius:10px;padding:12px 14px;}
-  .course-col h4{font-size:.78rem;color:var(--deep);margin-bottom:6px;font-weight:700;letter-spacing:.03em;}
-  .course-col ul{list-style:none;font-size:.83rem;color:#4a4236;}
-  .course-col ul li{margin-bottom:4px;}
-  .contact-block{margin-top:auto;border-top:1px solid var(--light-gold);padding-top:14px;}
-  .contact-line{font-size:.88rem;color:#3d3528;display:flex;align-items:center;gap:10px;}
-  .contact-line + .contact-line{margin-top:8px;}
-  .contact-line .sym{font-size:1.05rem;color:var(--gold);width:22px;text-align:center;flex:none;}
-  .contact-line strong{color:var(--deep);margin-right:2px;}
-  .contact-line .val{font-family:ui-monospace,Menlo,monospace;color:var(--gold);}
+  /* ===== REFLECTIONS ===== */
+  .refl{display:grid;gap:16px;margin-top:18px;}
+  .refl .r{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;}
+  .refl .r .n{font-size:.72rem;letter-spacing:.16em;color:var(--gold);text-transform:uppercase;}
+  .refl .r h4{margin:4px 0 7px;font-size:1.04rem;font-weight:550;color:var(--ink);}
+  .refl .r p{margin:0;font-size:.9rem;color:#4a4236;line-height:1.66;}
+  .live{font-size:.76rem;color:var(--gold);font-style:italic;margin-top:20px;}
 
+  /* ===== ABOUT ===== */
+  .abt{display:grid;grid-template-columns:1fr 1.35fr;gap:26px;margin-top:18px;align-items:start;}
+  .certs{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .cert.art{aspect-ratio:3/4;width:100%;}
+  .bio p{font-size:.94rem;color:#4a4236;margin:0 0 12px;line-height:1.66;}
+  .course-grid{background:#fbf9f4;border:1px solid var(--line);border-radius:12px;padding:18px 20px;}
+  .course-grid h4{margin:0 0 10px;font-size:.98rem;font-weight:600;color:var(--deep);}
+  .course-grid ul{list-style:none;margin:0;padding:0;}
+  .course-grid li{padding:7px 0;border-bottom:1px dashed var(--line);font-size:.88rem;color:#4a4236;display:flex;gap:9px;align-items:baseline;flex-wrap:wrap;}
+  .course-grid li:last-child{border-bottom:none;}
+  .course-grid li b{color:var(--ink);}
+  .stt{font-size:.68rem;padding:2px 9px;border-radius:99px;white-space:nowrap;margin-left:auto;}
+  .stt-draft{background:#f3e6cf;color:#8a6424;}
+  .stt-done{background:#dfe9d8;color:#4d6b37;}
+  .stt-wip{background:#e6e0f2;color:#5b4a86;}
+  .stt-hold{background:#eaeaea;color:#6b6b6b;}
+
+  /* ===== DRUG LABEL images: three in one row, smaller ===== */
+  .label-enlarge{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px;align-items:start;}
+  .label-enlarge figure{margin:0;}
+  .label-enlarge .art{transform:none;overflow:hidden;box-shadow:0 3px 14px -10px rgba(90,66,40,.35);aspect-ratio:4/3;max-height:28vh;min-height:100px;}
+  .label-enlarge .art img{width:100%;height:100%;object-fit:contain;background:#f6f2e9;}
+  .label-enlarge figcaption{font-size:.78rem;line-height:1.5;margin-top:6px;}
+  @media(max-width:860px){.label-enlarge{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:540px){.label-enlarge{grid-template-columns:1fr;}}
+
+  /* ===== ORIGIN: left image, right text, image +15% ===== */
+  .origin-flex{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1.1fr);gap:22px;align-items:center;margin-top:22px;}
+  .origin-flex .art{aspect-ratio:1/1;max-height:51vh;min-height:207px;margin:0;}
+  .origin-flex .art img{object-fit:contain;background:#f4efe4;}
+  .origin-flex .origin{margin-top:0;}
+  @media(max-width:860px){.origin-flex{grid-template-columns:1fr;}}
+
+  /* ===== DOT ===== */
+  .dot-only{display:flex;align-items:center;justify-content:center;background:var(--ph);}
+  .dot-mark{font-size:clamp(3rem,9vw,6rem);line-height:1;color:#8b6914;font-weight:bold;}
+
+  /* ===== DOWNLOADS (Original Manuscript) ===== */
   .dl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:16px;margin-top:8px;}
-  .dl-card{background:var(--card);border:1px solid var(--light-gold);border-radius:14px;padding:20px 18px;}
+  .dl-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px 18px;}
   .dl-card .ico{font-size:1.5rem;}
   .dl-card h4{font-size:.98rem;font-weight:640;margin:8px 0 5px;color:var(--deep);}
   .dl-card p{font-size:.79rem;color:var(--fade);margin-bottom:12px;line-height:1.5;}
-  .dl-card .pdf-chip{margin:0;font-size:.79rem;padding:7px 16px;}
+  .dl-card .read-chip{margin:0;font-size:.82rem;padding:9px 16px;}
 
-  footer{border-top:1px solid var(--light-gold);padding:24px 0;text-align:center;color:#a8a29a;font-size:.78rem;}
+  /* ===== READ-CHIP / PDF FRAME ===== */
+  .read-chip{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff !important;
+    border:none;border-radius:9px;padding:10px 18px;font-size:.87rem;cursor:pointer;font-family:inherit;
+    box-shadow:0 4px 14px -8px rgba(122,92,58,.6);transition:.2s;}
+  .read-chip:hover{background:var(--deep);transform:translateY(-1px);}
+  .read-chip.ghost{background:#fff;color:var(--deep) !important;border:1.5px solid var(--gold);}
+  .read-chip.ghost:hover{background:var(--deep);color:#fff !important;border-color:var(--deep);}
+  .note-line{font-size:.8rem;color:var(--fade);}
+  .pdf-frame{display:none;position:fixed;inset:0;z-index:300;background:rgba(20,16,12,.62);
+    align-items:center;justify-content:center;padding:24px;}
+  .pdf-frame.on{display:flex;}
+  .pdf-box{width:min(920px,94vw);height:min(88vh,820px);background:#fff;border-radius:14px;overflow:hidden;
+    display:flex;flex-direction:column;box-shadow:0 30px 70px -20px rgba(0,0,0,.5);}
+  .pdf-box .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 15px;
+    background:#f3eadc;font-size:.8rem;color:var(--deep);flex-wrap:wrap;}
+  .pdf-box .bar .hint{font-size:.72rem;color:var(--fade);}
+  .pdf-box iframe{width:100%;flex:1;border:none;}
 
-  @media(max-width:820px){
-    .hero h1{font-size:3.4rem;}
-    .triplet,.wv-grid,.grammar-grid{grid-template-columns:1fr 1fr;}
-    .lr{grid-template-columns:1fr;}
-    .punc-feat{grid-template-columns:1fr 1fr;}
-    .stage-grid{grid-template-columns:1fr 1fr;}
-    .stage-below{grid-template-columns:1fr;}
-    .prow.r2,.prow.r3,.prow.r4{grid-template-columns:repeat(4,1fr);}
-    .abt-l{flex-direction:column;}
-    .course-grid{flex-direction:column;}
-  }
+  footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--fade);font-size:.82rem;text-align:center;}
+  @media print{.pdf-frame{display:none;}}
 </style>
 </head>
 <body>
 
-<nav>
+<nav aria-label="primary">
   <div class="inner">
-    <span class="logo">✦ Kulatish</span>
     <ul>
       <li><a href="#home">Home</a></li>
-      <li><a href="#worldview">Worldview</a></li>
       <li><a href="#constructed">Constructed Lang</a></li>
+      <li><a href="#personified">Personified World</a></li>
       <li><a href="#field">Field Projects</a></li>
-      <li><a href="#personified">Personified</a></li>
       <li><a href="#stage">Stage &amp; Fiction</a></li>
-      <li><a href="#original-manuscript">Original Manuscript</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="#reflections">Reflections</a></li>
+      <li><a href="#downloads">Original Manuscript</a></li>
+      <li><a href="#about">About Me</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- ===== HERO + TRIPLET ===== -->
-<section id="home" class="hero">
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
   <div class="container">
     <h1>Kulatish</h1>
-    <div class="sub">
-      <textarea class="blank" placeholder="Write your own opening here — a paragraph, a question, a confession..."></textarea>
-    </div>
     <div class="triplet">
       <div class="tri-card">
         <div class="ico">✶</div>
         <h4>Create</h4>
-        <p>I build languages, draw punctuation marks, and write worlds where the rules bend around how you actually see things.</p>
+        <p>I build systems and then test them: a language of my own (12 chapters, plus a 25-sign ancient script), two mirror-world novellas, and personified worlds of punctuation, chemistry and the Shanghai Metro.</p>
+        <div class="tags">Grammar &middot; Fiction &middot; Worlds</div>
       </div>
       <div class="tri-card">
         <div class="ico">⌕</div>
         <h4>Research</h4>
-        <p>I sit in hospital wards, chase dying dialects, and redesign the tiny print that decides whether someone takes their pill.</p>
+        <p>I also test ideas where they meet real people: IOLC linguistics, a dialect study in Yuxian, shadowing speech therapy in a rehab hospital, and a plain-language redesign of drug package inserts.</p>
+        <div class="tags">IOLC &middot; Dialect &middot; Aphasia &middot; DPI</div>
       </div>
       <div class="tri-card">
         <div class="ico">◐</div>
         <h4>Perform</h4>
-        <p>I stage arguments about power and test my theories on a sticky floor at 9pm, in front of a tired, laughing room.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== WORLDVIEW ===== -->
-<section id="worldview">
-  <div class="container">
-    <div class="sec-head"><h2>Worldview</h2><span class="sub">four questions i keep asking · tap to unfold</span></div>
-    <div class="wv-grid">
-      <div class="wv-card">
-        <input type="checkbox" id="w1" class="wv-toggle">
-        <label for="w1" class="wv-summary"><span class="num">01</span>Why does everyone agree to call this "apple"?</label>
-        <div class="wv-body">
-          <p>I started with a stupidly simple question: why does everyone agree to call this an apple? Not how the word got here — but why we all settled on the same one. Language takes something as personal as a feeling and turns it into a fixed symbol. Something always gets crushed in that translation.</p>
-          <span class="src">from notebook, 2024</span>
-        </div>
-      </div>
-      <div class="wv-card">
-        <input type="checkbox" id="w2" class="wv-toggle">
-        <label for="w2" class="wv-summary"><span class="num">02</span>Does a world die from chaos or from being too fixed?</label>
-        <div class="wv-body">
-          <p>That's the plot of every dystopia I love. In <em>1984</em>, shrink the language and you shrink what people can think. In <em>Animal Farm</em>, the horror isn't that things are bad — it's that nobody dares say they're bad. A "perfect" world where the definition froze is already dead. We just haven't noticed yet.</p>
-          <span class="src">reading notes on four dystopias</span>
-        </div>
-      </div>
-      <div class="wv-card">
-        <input type="checkbox" id="w3" class="wv-toggle">
-        <label for="w3" class="wv-summary"><span class="num">03</span>Red sun, blue sun — can we still sit under the same light?</label>
-        <div class="wv-body">
-          <p>We all agree the sun rises in the east. That's the shared part. But I think it looks like tomato jam and you think it looks like blueberry jam, and neither of us can prove the other wrong — even if we both say "red." Consensus doesn't mean we see the same thing. That's not a bug.</p>
-          <span class="src">notebook, "red sun blue sun"</span>
-        </div>
-      </div>
-      <div class="wv-card">
-        <input type="checkbox" id="w4" class="wv-toggle">
-        <label for="w4" class="wv-summary"><span class="num">04</span>If language shapes reality, why can't words be fuel?</label>
-        <div class="wv-body">
-          <p>Language is powerful enough to shape reality. So why can't it be a source of energy? In the world I'm building, every conversation makes a kind of energy — yǔnéng. Strong definitions become tools, weak ones become fuel for the city. A boss snaps at someone lower and the room carries it. That's not magic. It's just admitting language has weight.</p>
-          <span class="src">worldbuilding note, "linguistic energy"</span>
-        </div>
+        <p>Drama-club president. I stage personified grammar because meaning is something people do together, not just something written down.</p>
+        <div class="tags">Theatre &middot; Embodiment &middot; Care</div>
       </div>
     </div>
   </div>
@@ -331,54 +317,55 @@
 <!-- ===== CONSTRUCTED LANGUAGE ===== -->
 <section id="constructed">
   <div class="container">
-    <div class="sec-head"><h2>Constructed Language</h2><span class="sub">Kulatish · 7has Quratish</span></div>
-
+    <div class="sec-head"><h2>Constructed Language</h2><span class="sub">Kulatish &middot; the 12 chapters first</span></div>
     <div class="proj">
       <div class="proj-title-row">
-        <h3>Kulatish — a language I built</h3>
-        <a class="back" href="#constructed">← back to section</a>
+        <h3>Kulatish &mdash; a language I built</h3>
+        <a class="back" href="#constructed">&#8593; top of section</a>
       </div>
-      <div class="meta"><span>since 2023</span><span>12 chapters</span><span>25‑sign script</span><span>~400 roots</span></div>
+      <div class="meta"><span>since 2024</span><span>12 chapters &middot; the core</span><span>25-sign ancient script</span><span>working draft</span></div>
 
-      <div class="origin"><span class="lbl">Why</span>"When I was little, English clauses felt backwards. You don't find out who did it till the very end of the sentence. I didn't think English was wrong — I thought maybe English speakers just… wait. Like their brains hold the door open. So I made a language where the rules bend around how you actually look at something, not the other way round."</div>
-      <div class="field"><span class="label">What</span><div class="content">SOV word order, nominative–accusative alignment. Adjective order follows the sequence a human actually notices features in — size, shape, age, color. A 25‑sign ancestor script sits underneath as the "ancient layer," and derivational affixes let you weld root concepts into new words.</div></div>
-      <div class="field"><span class="label">Outcome</span><div class="content">A working language with a base‑12 numeral system, a logographic script, and a full grammar manual (PDF, 45 pp.). Sample texts: a folk tale, a dialogue, a philosophical fragment.</div></div>
-      <div class="field"><span class="label">Reflection &amp; Next Steps</span><div class="content">Expanding the lexicon and writing a short story entirely in Kulatish with interlinear gloss. Next: record a spoken sample and test mutual intelligibility with another conlanger.</div></div>
+      <div class="wwn">
+        <div class="w"><span class="wn">Why</span><p>When I was little, English clauses felt backwards &mdash; you don't find out who did it till the very end of the sentence. I didn't think English was wrong; I thought maybe English speakers just wait, their brains holding the door open. So I made a language where the rules bend around how you actually look at something, not the other way round.</p></div>
+        <div class="w"><span class="wn">What I did</span><p>Twelve chapters of grammar &mdash; word order, case, aspect, modality, adjective ordering, negation, questions, measure, discourse particles, clauses &mdash; plus a separate hand-drawn layer of 25 signs on a 4&times;4 board.</p></div>
+        <div class="w"><span class="wn">What I take away</span><p>The tidy grammar pins meaning down; the 25 signs leave the reader room to fill it in. Keeping both taught me that a shared rule and an open gap can sit inside the same system.</p></div>
+        <div class="w"><span class="wn">Next</span><p>Build an input method so I can type whole sentences in the 25 signs, then feed those sentences to a model and see whether it picks up the logic.</p></div>
+      </div>
 
-      <!-- ===== 12 chapters : native details ===== -->
-      <div class="grammar-head">
-        <div class="btn-group">
-          <button class="grammar-toggle-all-btn" onclick="toggleAllGrammar()">▸ expand all 12 chapters</button>
+      <details class="g-card" open id="grammar12">
+        <summary>The outer grammar &mdash; 12 chapters, the core of it <span class="hint">&#9660; tap any chapter &nbsp;·&nbsp; open the full draft below</span><span class="arw">&#9660;</span></summary>
+        <div style="padding:16px 20px 22px;">
+          <p style="font-size:.9rem;color:var(--soft);line-height:1.66;margin:0 0 12px;">Each heading is a rule I had to decide on. Where the grammar could have gone another way, I've marked the choice and the reason &mdash; no rule here is inherited from a natural language.</p>
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:18px;">
+            <button class="read-chip prime" data-pdf="files/kulatish_grammar.pdf" data-title="Kulatish Grammar Manual &amp;#8212; 12 chapters, working draft">&#128065; open the grammar manual &middot; 12 chapters, working draft</button>
+            <span class="note-line">working draft &middot; embedded preview, view only</span>
+          </div>
+          <div class="chips" style="margin-top:18px;">
+            <div class="ch"><b>01 &middot; Word order</b><span>SOV, and strict about it. Who did what to whom is settled before the verb lands.</span></div>
+            <div class="ch"><b>02 &middot; The noun</b><span>Five cases for who holds, who receives, who's affected, where, and with what.</span></div>
+            <div class="ch"><b>03 &middot; Tense &amp; aspect</b><span>Split apart. Time says when; aspect says how the action fills its space.</span></div>
+            <div class="ch"><b>04 &middot; Modality</b><span>What must, may or almost did &mdash; the grammar of being unsure.</span></div>
+            <div class="ch"><b>05 &middot; Adjectives</b><span>An ordered queue: size, then colour, then origin. No exceptions by mood.</span></div>
+            <div class="ch"><b>06 &middot; Verbs &amp; valence</b><span>How many partners an action wants, and what changes when you add one.</span></div>
+            <div class="ch star"><b>07 &middot; Negation</b><span>The rule I keep coming back to: negation isn't a word but a position, and it flips whatever scope it sits inside. It's the one place the grammar admits it can't settle a sentence on its own.</span></div>
+            <div class="ch"><b>08 &middot; Questions</b><span>Marked by intent, not word order. A demand for an answer reads differently.</span></div>
+            <div class="ch"><b>09 &middot; Number &amp; measure</b><span>Base-12 counting, plus classifiers only where the thing's shape matters.</span></div>
+            <div class="ch"><b>10 &middot; Discourse particles</b><span>The tiny bits that say "I'm serious," "between us," or "you already know."</span></div>
+            <div class="ch"><b>11 &middot; Clauses</b><span>Embedding, switching viewpoint, and how a sentence survives its own detour.</span></div>
+            <div class="ch"><b>12 &middot; Writing it down</b><span>The 25 signs aren't the alphabet &mdash; they're an option panel. This chapter bridges the two.</span></div>
+          </div>
         </div>
-        <a class="pdf-chip" href="files/kulatish_grammar.pdf" target="_blank" download><span class="ico">📘</span> Full manual · kulatish_grammar.pdf (45 pp.)</a>
-      </div>
+      </details>
 
-      <div class="grammar-grid" id="grammarGrid">
-        <div class="g-card"><details><summary>Ch.1 · Phonology &amp; Orthography</summary><div class="g-body"><p>23 consonants, 7 vowels, (C)V(C) syllables, stress rules, Latin‑based romanization with IPA guide.</p></div></details></div>
-        <div class="g-card"><details><summary>Ch.2 · Noun Declension (5 cases)</summary><div class="g-body"><p>Nominative, accusative, genitive, dative, locative. Regular suffixes + short irregular list.</p></div></details></div>
-        <div class="g-card"><details><summary>Ch.3 · Verb Conjugation</summary><div class="g-body"><p>Tense × aspect × mood: past/present/future, perfective/imperfective, indicative/imperative/subjunctive/conditional.</p></div></details></div>
-        <div class="g-card"><details><summary>Ch.4 · Adjective Ordering</summary><div class="g-body"><p>Perceptual hierarchy: size → shape → age → color → origin → material → purpose. Swap it and the phrase goes ungrammatical.</p></div></details></div>
-        <div class="g-card"><details><summary>Ch.5 · Numeral System (base 12)</summary><div class="g-body"><p>Roots 0–11, compounding, ordinals, distributives. Base 12 chosen for divisibility by 2,3,4,6.</p></div></details></div>
-        <div class="g-card"><details><summary>Ch.6 · Clause Embedding</summary><div class="g-body"><p>Relative, complement, adverbial clauses. Subordinating particles and word‑order shifts.</p></div></details></div>
-        <div class="g-card"><details><summary>Ch.7 · Discourse Particles</summary><div class="g-body"><p>Topic marker, focus particle, evidentials (direct vs hearsay), politeness registers.</p></div></details></div>
-        <div class="g-card"><details><summary>Ch.8 · Derivational Morphology</summary><div class="g-body"><p>Verb→noun, noun→adjective, causative/benefactive/reflexive affixes with before‑after examples.</p></div></details></div>
-        <div class="g-card"><details><summary>Ch.9 · 25‑Sign Ancestor Script</summary><div class="g-body"><p>Logographic layer: each sign = one root concept. Decipherment notes + 3 sample inscriptions.</p></div></details></div>
-        <div class="g-card"><details><summary>Ch.10 · Lexicon (~400 roots)</summary><div class="g-body"><p>Semantic fields: nature, body, action, emotion, time, space, social relations. Each with gloss and example.</p></div></details></div>
-        <div class="g-card"><details><summary>Ch.11 · Register &amp; Pragmatics</summary><div class="g-body"><p>Formal/informal, honorifics, hesitation markers, fillers. Indirectness strategies.</p></div></details></div>
-        <div class="g-card"><details><summary>Ch.12 · Sample Texts</summary><div class="g-body"><p>Folk tale, dialogue, philosophical fragment. Interlinear gloss + idiomatic English translation.</p></div></details></div>
-      </div>
-
-      <!-- ancient layer -->
-      <div class="ancient">
-        <h4><span class="glyph">🜃</span> The Ancient Layer — branching outward, converging inward</h4>
-        <p>Underneath modern Kulatish sits an older system I call <span class="term">Quratish-thol</span>, the "root tongue." Its 25 signs don't name words — they name <em>directions a concept can move</em>. Every modern word is built from one of those directions plus a modifier, which is why the lexicon feels like a map with 25 compass points.</p>
-        <p>The logic is <span class="term">outward‑branch, inward‑converge</span>: from a single root the meaning sprouts into neighbouring domains — <em>fire</em> reaches toward heat, toward light, toward anger, toward hearth. Follow any branch far enough and it meets a branch from another root, and at that crossing the language forces a choice — one word survives, the other becomes an obsolete glyph. That's how the ancient script shrank from dozens of signs to the 25 that remain.</p>
-        <p>I think of it as the opposite of how definitions usually work. A dictionary closes a word in. Quratish-thol opens it out, then waits for two open ends to collide. The place they collide is where a new word is born — and where an old one quietly dies.</p>
-        <div class="media">
-          <div class="mb"><div class="cap">IMG · the 25‑sign radial map (outward branches) → <code>lang_ancient_radial.jpg</code></div></div>
-          <div class="mb"><div class="cap">IMG · convergence tablet: where two roots meet → <code>lang_ancient_convergence.jpg</code></div></div>
+      <div class="origin-flex">
+        <div class="art">
+          <img src="images/kulatish_radial.jpg" alt="25-sign radial board" data-ph="25-sign radial board">
         </div>
-        <p class="priv" style="border:none;background:transparent;padding:4px 0;">Both plates are my own hand‑drawn reconstructions; the "convergence" example is invented, not a real inscription.</p>
+        <div class="origin">
+          <span class="lbl">Underneath: the 25-sign layer</span>
+          <p>Before the 12 chapters there's a barer board &mdash; <em style="color:var(--deep);">Heart &middot; Mind &middot; Hand &middot; Mouth</em> crossed with <em style="color:var(--deep);">Out / In</em> and <em style="color:var(--deep);">Converge / Disperse</em>. I draw each sign by hand so the grid stays visible and</p>
+          <p class="priv" style="border:none;background:transparent;padding:4px 0;">Both layers are my own construction. The "feeling" readings are interpretive, not a claim about how natural languages work.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -387,229 +374,302 @@
 <!-- ===== FIELD PROJECTS ===== -->
 <section id="field">
   <div class="container">
-    <div class="sec-head"><h2>Field Projects</h2><span class="sub">three real‑world investigations</span></div>
-    <div class="subnav">
-      <a href="#p-aphasia">① Aphasia Observation</a>
-      <a href="#p-dialect">② Dialect Fieldwork</a>
-      <a href="#p-label">③ Drug Package Insert Redesign</a>
+    <div class="sec-head"><h2>Field Projects</h2><span class="sub">where the idea meets a person</span></div>
+    <p style="font-size:.92rem;color:var(--soft);max-width:52em;margin:6px 0 4px;">Dialects fade, language breaks, leaflets confuse. In each project I look for the point where a working system stops serving the person &mdash; then try to fix the fit without speaking over them.</p>
+
+    <div class="subnav" style="margin:14px 0 22px;">
+      <a class="subnav-a" href="#p-dialect">Dialect Fieldwork</a>
+      <a class="subnav-a" href="#p-aphasia">Aphasia Observation</a>
+      <a class="subnav-a" href="#p-label">Drug Package Insert Redesign</a>
     </div>
 
-    <!-- ① aphasia : left text / right image -->
+    <!-- dialect -->
+    <div class="proj" id="p-dialect" style="margin-top:20px;">
+      <div class="proj-title-row"><h3 id="dialect">Dialect fieldwork &middot; Yuxian, Shanxi</h3><a class="back" href="#field">&#8593; top of section</a></div>
+      <div class="meta"><span>Aug 2026</span><span>Yuxian, Shanxi</span><span>Summer break</span></div>
+      <div class="wwn"><div class="w"><span class="wn">Why</span><p>Yuxian County in Shanxi is known for holding on to Middle Chinese features, and I was curious whether that "holding on" was something speakers chose or something that just happened to them.</p></div><div class="w"><span class="wn">What I did</span><p>Summer 2026, three generations of one family and their neighbours. I recorded comparisons, noted which tones were drifting, and asked what the young people &mdash; the ones who'd come back home after working away &mdash; no longer said at the dinner table.</p></div><div class="w"><span class="wn">What I take away</span><p>The drift isn't random: parents smooth their talk toward children, kids bring the standard home, and the blurry one-sound-many-meanings bits survive because context sorts them out. I came looking for a language "holding on"; I found people deciding what to keep.</p></div><div class="w"><span class="wn">Next</span><p>Transcribe the recordings and see whether the tone shifts line up with who talks to whom most.</p></div></div>
+
+      <div class="lr dial-grid" style="align-items:stretch;">
+        <div class="art wd"><img src="images/field_dialect_tonelog.jpg" alt="Phonology comparison sheet from Yuxian" data-ph="tone log &mdash; Yuxian field notes"></div>
+        <div class="field" style="margin:0;border-left-width:3px;">
+          <span class="label">Reading the drift</span><div class="content">Change tracks social use, not decay: parents smooth their talk toward children, kids bring the standard home, and a few rounds later the local forms converge toward Mandarin. The opaque, one-sound-many-meanings bits stay because context resolves them in a blink &mdash; efficiency, not loss.</div>
+        </div>
+      </div>
+      <div class="lr dial-grid" style="margin-top:18px;align-items:center;">
+        <div class="art vid" style="max-width:46em;"><video controls preload="metadata" playsinline poster="images/dialect_video_poster.jpg" style="width:100%;border-radius:10px;"><source src="files/dialect_field.mp4" type="video/mp4"><source src="videos/field_dialect_yuxian.mp4" type="video/mp4">your browser doesn't support video</video></div>
+        <div class="field" style="margin:0;border-left-width:3px;"><span class="label">A field note</span><div class="content">Faces and names stay out of frame. Watching the clips back, I kept noticing that understanding landed in a gesture or a laugh before it landed in a word &mdash; which is exactly the gap this project is about.</div></div>
+      </div>
+
+      <div class="field" style="margin-top:16px;"><span class="label">What the drift says</span><div class="content">
+        <div class="steps">
+          <div class="st"><b>It isn't random.</b> Change tracks social trust and efficiency: people collectively decide what's worth keeping.</div>
+          <div class="st"><b>A compromise phonology in progress.</b> Parents Mandarinate their talk to children; kids bring the standard home; a few rounds later the drift converges.</div>
+          <div class="st"><b>The opaque bits stay.</b> One-sound-many-meanings quirks are resolved by context in a blink &mdash; holding them back is what makes talk efficient.</div>
+        </div>
+      </div>
+
+      <div class="pull" style="margin-top:22px;">&ldquo;My first guess was that the dialect was trapping people's thinking. What I saw instead was a community, together and on purpose, deciding which language to use next.&rdquo;<small>field note &middot; Yuxian, Aug 2026</small></div>
+      <p class="priv">What I want to keep doing: turn up with a hypothesis, then let the recordings &mdash; and the people &mdash; rewrite it. The space between intention and reception is where the habit shows up.</p>
+    </div>
+
+    <!-- aphasia -->
     <div class="proj" id="p-aphasia">
-      <div class="proj-title-row">
-        <h3>① Aphasia Observation — speech therapy shadowing</h3>
-        <a class="back" href="#field">← back to section</a>
+      <div class="proj-title-row"><h3 id="aphasia">Aphasia Observation &middot; speech therapy shadowing</h3><a class="back" href="#field">&#8593; top of section</a></div>
+      <div class="meta"><span>Jan 2026</span><span>Beijing</span><span>Winter break</span></div>
+      <div class="wwn"><div class="w"><span class="wn">Why</span><p>In the world I'm writing, a god silences everyone because they defined everything into stillness. Then I walked into a real hospital and saw people whose words had broken &mdash; and they weren't silent at all. They tapped rhythms, drew shapes, held eye contact a beat too long. Language wasn't gone; it had just rerouted. That changed how I think about "broken."</p></div><div class="w"><span class="wn">What I did</span><p>Shadowed a speech-language therapist for two weeks: picture-naming and word-card tasks with people who had aphasia, and the swallowing work that sits inside the same job. No equipment &mdash; just watching what the body does when the mouth can't.</p></div><div class="w"><span class="wn">What I take away</span><p>At first I was afraid to talk to the patients. I learned to hold the eye contact, smile, and wait longer than feels natural. A pause isn't empty &mdash; it's where the next word is being assembled.</p></div><div class="w"><span class="wn">Next</span><p>Learn the standard assessment scales properly, so "waiting" can turn into something more useful than patience. Also adapting one technique into a workshop for my drama club.</p></div></div>
+
+      <div class="lr" style="margin-top:20px;align-items:center;">
+        <div class="art sq" style="max-width:34.5em;width:100%;max-height:30vh;"><img src="images/field_aphasia_notebook.jpg" alt="Aphasia observation notes &amp;#8212; no identifiable data" data-ph="observation notebook &mdash; 12 sessions"></div>
+        <div class="field" style="margin:0;border-left-width:3px;"><span class="label">On waiting</span><div class="content">&ldquo;He could only say two words. I learned to wait longer than feels natural.&rdquo; They were <em>Eat.</em> and <em>Home.</em> &mdash; after a stroke, he understood everything else and would nod back. That silence taught me more than any textbook.</div></div>
       </div>
-      <div class="meta"><span>Jan 2026 · winter break</span><span>Beijing · PKU Medical Rehab Hospital</span></div>
-      <div class="lr">
-        <div class="txt">
-          <div class="origin" style="margin-bottom:12px;"><span class="lbl">Why</span>"In the world I'm writing, a god silences everyone because they defined everything into stillness. Then I walked into a real hospital and saw people whose words had broken — and they weren't silent at all. They tapped rhythms, drew shapes, held eye contact a beat too long. Language wasn't gone. It had just rerouted. That changed how I think about 'broken.'"</div>
-          <div class="field"><span class="label">What</span><div class="content">Sat in on speech therapy sessions, logging how people rebuild communication when words fail — gesture, rhythm, drawings in the air. No equipment. Just watching what the body does when the mouth can't.</div></div>
-          <div class="field"><span class="label">Outcome</span><div class="content">Notebook with 12 sessions documented. Key pattern: patients consistently used spatial mapping (pointing, tracing shapes) before attempting vocalisation.</div></div>
-          <div class="field"><span class="label">Reflection &amp; Next</span><div class="content">Returning next winter for a prosody‑focused second round (hospital approved). Also adapting one technique into a workshop for my drama club.</div></div>
-        </div>
-        <div class="art">
-          <img src="images/field_aphasia_notebook.jpg" alt="observation notebook" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=\'ph\'>📓</div>'">
-        </div>
-      </div>
-      <p class="priv">Notes &amp; environment only. No patient name, diagnosis or record pictured. Observing done with department permission and patients' awareness.</p>
+      <p class="priv">Notes &amp; environment only. No patient name, diagnosis or record pictured. Observing done with department permission and patients' awareness. At my desk I only care whether a grammar is elegant; in that ward I saw that breaking language breaks identity &mdash; and the meaning was still there, unspoken.</p>
     </div>
 
-    <!-- ② dialect -->
-    <div class="proj" id="p-dialect">
-      <div class="proj-title-row">
-        <h3>② Dialect Fieldwork — Yuxian, Shanxi</h3>
-        <a class="back" href="#field">← back to section</a>
-      </div>
-      <div class="meta"><span>Aug 2026 · summer break</span><span>Yushe County, Shanxi</span></div>
-      <div class="origin"><span class="lbl">Why</span>"A dying dialect isn't just words disappearing. It's a whole way of noticing the world slowing down. I didn't go there to 'save' it. I went to watch what happens when a town's definitions start freezing — and to catch the ones still melting."</div>
-      <div class="field"><span class="label">What</span><div class="content">Recorded local speakers and chased the in‑between variety — a dialect halfway to Mandarin. Three patterns: tone merging, one word pronounced two ways, and quiet resolutions made in a blink.</div></div>
-      <div class="field"><span class="label">Outcome</span><div class="content">Audio of 8 speakers, a tone‑log spreadsheet, and a short paper on tone mergers. Shared with the local cultural archive.</div></div>
-      <div class="field"><span class="label">Reflection &amp; Next</span><div class="content">Going back summer 2027 with a spectrogram setup. The younger generation barely uses the dialect — the window is closing.</div></div>
-      <div class="media">
-        <div class="mb"><video controls preload="metadata"><source src="videos/field_dialect_yuxian.mp4" type="video/mp4">browser doesn't support video</video><div class="cap">VIDEO · field recording → <code>field_dialect_yuxian.mp4</code> (faces blurred, consented)</div></div>
-        <div class="mb"><div class="cap">IMG/SCAN · tone log → <code>field_dialect_tonelog.jpg</code></div></div>
-      </div>
-    </div>
-
-    <!-- ③ label : no images, only text + pdf chip -->
+    <!-- drug package insert -->
     <div class="proj" id="p-label">
-      <div class="proj-title-row">
-        <h3>③ Drug Package Insert Redesign — for my grandmother</h3>
-        <a class="back" href="#field">← back to section</a>
+      <div class="proj-title-row"><h3 id="dpi">Drug Package Insert &middot; the elder-friendly design</h3><a class="back" href="#field">&#8593; top of section</a></div>
+      <div class="meta"><span>May&ndash;Jun 2025</span><span>Shanghai</span><span>20+ participants interviewed</span></div>
+      <div class="wwn">
+        <div class="w"><span class="wn">Why</span><p>I usually live with my grandmother. My mother works in Beijing and comes home at weekends, so reminding her, checking the doses and managing changes in her medicine is something I do. Once, after a new prescription, she wanted to read the leaflet first. It listed frightening side effects in words she could not follow, and she was too scared to take the pills.</p></div>
+        <div class="w"><span class="wn">What I did</span><p>My interest in the chemical formulas printed on drug labels made me look closer at the language around them. I compared how other countries keep a professional monograph separate from a plain-language patient leaflet, tested a simplified draft by reading it aloud with my grandmother and her friends, then wrote five concrete suggestions.</p></div>
+        <div class="w"><span class="wn">What I take away</span><p>What older readers need is a safe way to use the medicine &mdash; not the pharmacology. The chemistry on the box is the easy part; the words around it decide whether someone actually takes the pill.</p></div>
+        <div class="w"><span class="wn">Next</span><p>On 19 June 2025 I emailed the five points to the Center for Drug Evaluation (CDE), NMPA during the public consultation. Next I would take a revised draft back to my grandmother's friends and see whether it reads the way they do.</p></div>
       </div>
-      <div class="meta"><span>May–Jun 2025</span><span>submitted to CDE, NMPA</span></div>
-      <div class="origin"><span class="lbl">Why</span>"My grandmother hides from side effects. She reads 'may cause dizziness' and decides the pill is poison. But the real poison is the font size and the lawyer‑speak. She skipped her heart meds for three days because the warning scared her more than the disease. So I rewrote it — pictures instead of paragraphs, colours instead of footnotes. One insert shouldn't decide whether someone lives or skips."</div>
-      <div class="field"><span class="label">What</span><div class="content">Redesigned the <strong>drug package insert</strong>: pictograms instead of dense paragraphs, colour‑coded dosing, plain‑language warnings. Surveyed 20+ elderly patients, then submitted the proposal to the <strong>Center for Drug Evaluation, NMPA (CDE)</strong>.</div></div>
-      <div class="field"><span class="label">Outcome</span><div class="content">Proposal accepted for review by CDE. 85% of participants preferred the new design. A small pilot print run is being discussed with a local pharmacy.</div></div>
-      <div class="field"><span class="label">Reflection &amp; Next</span><div class="content">Building a general‑purpose template for any chronic‑disease medication. Next: user‑test with n=100 across three hospitals, then revise the submission.</div></div>
-      <div class="media">
-        <div class="mb"><div class="cap">IMG · CDE submission screenshot (ref. number redacted) → <code>label_cde_submission.jpg</code></div></div>
-        <div class="mb"><div class="cap">CHART · survey summary, 20+ respondents → <code>label_survey.jpg</code></div></div>
-        <div class="mb"><div class="cap">IMG · redesigned insert mockup → <code>label_mockup.jpg</code></div></div>
-      </div>
-      <p class="priv">The screenshot shown here has the submission reference number and all personal details removed. No patient identity or health information is included anywhere on this site.</p>
-    </div>
 
+      <div class="label-enlarge">
+        <figure>
+          <div class="art"><img src="images/label_japan_ref.jpg" alt="Reference &mdash; a plain-language patient edition abroad" data-ph="reference &mdash; plain-language patient edition"></div>
+          <figcaption class="cap"><b>Reference.</b> A consumer edition abroad &mdash; the facts kept, the wall of text gone.</figcaption>
+        </figure>
+        <figure>
+          <div class="art"><img src="images/label_survey.jpg" alt="Reading the draft aloud with grandmother and her friends" data-ph="user testing &mdash; reading aloud together"></div>
+          <figcaption class="cap"><b>User testing.</b> Read aloud with my grandmother and her friends, sentence by sentence.</figcaption>
+        </figure>
+        <figure>
+          <div class="art"><img src="images/label_cde_email.jpg" alt="Submission screenshot &mdash; email to CDE, NMPA" data-ph="submission email &mdash; CDE / NMPA (redacted)"></div>
+          <figcaption class="cap">Submitted 2025.6.19 to the Center for Drug Evaluation (CDE), NMPA &mdash; screenshot of the email. Address and reference number masked.</figcaption>
+        </figure>
+      </div>
+      <p class="priv">Everything pictured here is redacted: no patient name, diagnosis, address or case number appears. The gap between what the leaflet says and what a patient hears is exactly the gap this project is trying to close.</p>
+
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:16px;">
+        <button class="read-chip" data-pdf="files/drug_label_proposal.pdf" data-title="Drug Package Insert &amp;#8212; Plain-Language Proposal (5 points)">&#128274; read the 5-point proposal</button>
+      </div>
+      <span class="note-line">submitted during consultation &middot; view only</span>
+    </div>
   </div>
 </section>
 
-<!-- ===== PERSONIFIED (拟人创作) ===== -->
+<!-- ===== PERSONIFIED WORLD ===== -->
 <section id="personified">
   <div class="container">
-    <div class="sec-head"><h2>Personified</h2><span class="sub">giving everything a personality · how i remember the abstract</span></div>
+    <div class="sec-head"><h2>Personified World</h2><span class="sub">functions, given habits and tempers</span></div>
+    <div class="subnav"><a class="subnav-a" href="#punctuation">Punctuation People</a><a class="subnav-a" href="#metro">Metro Citizens</a><a class="subnav-a" href="#chemistry">Chemistry Couples</a></div>
 
-    <div class="proj">
-      <div class="proj-title-row">
-        <h3>Anthropomorphic Thinking — nothing is too small to have a voice</h3>
-        <a class="back" href="#personified">← back to section</a>
+    <!-- PUNCTUATION -->
+    <div class="pw-main" id="punctuation" style="scroll-margin-top:76px;">
+      <h3>Punctuation People</h3><span class="sub">39 marks and counting</span>
+    </div>
+    <p class="pw-intro">I gave punctuation marks personalities, and the story stopped belonging to me. A period's job is to end things, so Parid is the one who always closes the door; a tilde drifts, so Tiao can't stay still. Once the functions had tempers, the characters started answering each other instead of waiting for me to write them.</p>
+
+    <div class="pw-block">
+      <div class="pw-h"><span class="pw-n">The cast</span><h3>Six full character sheets</h3><span class="pw-sub">each mark's job is fixed; its temper isn't</span></div>
+      <div class="grid3" style="margin-top:16px;">
+        <figure class="pcard"><div class="art sq"><img src="images/punct_period_comma.jpg" alt="Parid the Period and Comma" data-ph="Parid &amp; Comma"></div><figcaption><b>Parid (Period)</b> closes the door. <b>Comma</b> is the assistant who knows exactly when a breath is due.</figcaption></figure>
+        <figure class="pcard"><div class="art sq"><img src="images/punct_excl_quest.jpg" alt="Ikamush the Exclamation and Koreal the Question" data-ph="Ikamush &amp; Koreal"></div><figcaption><b>Ikamush (Exclamation)</b> cuts to the bone; off-shift she confesses everything to <b>Koreal (Question)</b>, who never stops asking why.</figcaption></figure>
+        <figure class="pcard"><div class="art sq"><img src="images/punct_dash.jpg" alt="Daicy the Dash" data-ph="Daicy"></div><figcaption><b>Daicy (Dash)</b> plays every life but her own, and when the cast leaves she can't find the exit.</figcaption></figure>
+        <figure class="pcard"><div class="art sq"><img src="images/punct_ellipsis.jpg" alt="Ellions the Ellipsis" data-ph="Ellions"></div><figcaption><b>Ellions (Ellipsis)</b> is a wandering gap. Words only ever graze him; nothing can fill him.</figcaption></figure>
+        <figure class="pcard"><div class="art sq"><img src="images/punct_quote.jpg" alt="Tei the Quotation" data-ph="Tei"></div><figcaption><b>Tei (Quotation)</b> folds a whole life into one book and lets every reader finish the portrait.</figcaption></figure>
+        <figure class="pcard"><div class="art sq dot-only" role="img" aria-label="Dianna the Dot &mdash; a single brown dot"><span class="dot-mark">·</span></div><figcaption><b>Dianna (Dot)</b> &mdash; a single point. The smallest mark on the page, the one every other sign orbits without quite naming.</figcaption></figure>
       </div>
-      <div class="meta"><span>ongoing</span><span>a habit, not a project</span></div>
-      <div class="origin"><span class="lbl">Why</span>"I don't memorise well. But if a subway line has a personality, I remember its route. If a chemical element has a social role, I remember its properties. It's not a trick — it's how I connect to things that otherwise feel abstract. Everything has a voice if you listen the right way."</div>
-      <div class="field"><span class="label">What</span><div class="content">I understand things by imagining them as people. Give a subway line a temper and I'll know which stops it rushes; give an element a social life and I'll know how it bonds. Two favourites below — I've done dozens more.</div></div>
-      <div class="field"><span class="label">Outcome</span><div class="content">A running sketchbook of "character sheets" for the things around me. They've become my default study tool: transit maps, the periodic table, grammar cases, even punctuation marks.</div></div>
-      <div class="field"><span class="label">Reflection &amp; Next</span><div class="content">Turning the best ones into a small illustrated zine, and testing whether the method helps other people — especially visual learners — hold onto dry facts.</div></div>
+    </div>
 
-      <div class="lr">
-        <div class="art">
-          <img src="images/metro_personified.jpg" alt="Shanghai Metro Line 1 as a character" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=\'ph\'>🚇</div>'">
-        </div>
-        <div class="txt">
-          <p class="lead">Shanghai Metro Line 1</p>
-          <p>"The old auntie who's been running this route since 1993. She's tired but she won't admit it. Her doors close slower than the others, like she's waiting for you — and then she sighs and leaves anyway."</p>
-          <p class="stage-caption">Knowing her temper is why I can draw the whole line from memory: Xinzhuang to Fujin Road, every sulky pause in between.</p>
+    <div class="pw-block">
+      <div class="pw-h"><span class="pw-n">More voices</span><h3>The ones who run the margins</h3><span class="pw-sub">notes, not yet full sheets</span></div>
+      <div class="grid3" style="margin-top:14px;">
+        <div class="cap"><b>Koren &middot; the Colon</b><br>An arrogant pragmatics professor, obsessed with logic and truth, who can't stop lecturing &mdash; and quietly rounds up the failing students at term's end.</div>
+        <div class="cap"><b>C-Mass &middot; the Semicolon</b><br>A wandering missionary of the Feather Doctrine: collects and classifies everything, believes "all things are language," and hates anyone upsetting her order.</div>
+        <div class="cap"><b>Inumia &middot; the Encomma</b><br>Runs a deep-alley snack shop on the rule that every ingredient is equal; equal proportions, oddly perfect balance.</div>
+        <div class="cap"><b>Tiao &middot; the Tilde</b><br>A blind painter who senses the "colour" of feeling. Terrified of being forgotten; takes every emotion anyone hands her.</div>
+        <div class="cap"><b>Estilico &middot; the Asterisk</b><br>The library's secret-keeper. She'll hide a truth behind a footnote if that's what keeping it safe takes &mdash; starlight that never shows its face.</div>
+        <div class="cap"><b>Ao &middot; the Apostrophe</b><br>Sole survivor of a family collapse; a near-fanatical minimalist who pares everything to its bone, except the one name he refuses to shorten.</div>
+      </div>
+    </div>
+
+    <div class="pull">&ldquo;A town is slowly being eaten by its own words, and the people whose souls are made of punctuation meet there &mdash; pulled between logic, faith, equality, feeling, secrets, plain speaking and innocence. What saves them isn't wiping out the mess, but learning to live with one another's imperfections.&rdquo;<small>the novel, in one sentence</small></div>
+
+    <div class="wwn" style="margin-top:18px;"><div class="w"><span class="wn">Why</span><p>A mark's job is fixed; its temper isn't. Giving each one a habit made the grammar easier to remember and the characters easier to write.</p></div><div class="w"><span class="wn">What I did</span><p>39 marks and counting &mdash; full sheets for the six above, notes for the rest. Selected chapters are in the reader.</p></div><div class="w"><span class="wn">What I take away</span><p>The cast is now bigger than the page I drew it on. Parentheses, slashes and the rest of the ellipsis family are still being finished.</p></div><div class="w"><span class="wn">Next</span><p>Bind the character bible properly and let a few marks' arguments drive the next chapter.</p></div></div>
+
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:16px;">
+      <button class="read-chip" data-pdf="files/punctuation_people.pdf" data-title="Punctuation People &amp;#8212; selected chapters, character bible">&#128274; read selected chapters &middot; character bible</button>
+      <span class="note-line">partial draft &middot; embedded preview, view only</span>
+    </div>
+
+    <!-- METRO -->
+    <div class="pw-block" id="metro">
+      <div class="pw-main" style="scroll-margin-top:76px;">
+        <h3>Metro Society</h3><span class="sub">taking the metro is how I learned to notice people</span>
+      </div>
+      <div class="pw-h"><h3>20 lines, around 500 stations</h3></div>
+      <p class="pw-intro">I turned 20 Shanghai lines into characters &mdash; colour, opening year, and the neighbourhoods each one passes through became their temper, job and relations. I rode every line and stopped at roughly 500 stations. A line's colour is the easy part to personify; harder is deciding what it does with the city it carries.</p>
+      <div class="lr" style="margin-top:16px;align-items:center;">
+        <div class="art wd" style="max-width:46em;"><img src="images/metro_group.jpg" alt="Shanghai Metro character sheet &amp;#8212; the 20 lines" data-ph="Shanghai Metro &amp;#8212; 20 lines, character sheet"></div>
+        <div class="field" style="margin:0;border-left-width:3px;">
+          <span class="label">Why this started</span>
+          <div class="content">Line 1 is steady, like a mother; Line 5 is the daughter who's always catching up. Drawing them slowed me down at stations &mdash; I started listening to how strangers divide a carriage. The group portrait is tall on purpose: every line gets its own footing, nothing cropped out.</div>
         </div>
       </div>
+      <div class="grid5 g5-metro" style="margin-top:20px;">
+        <figure class="mline"><div class="art sq"><img src="images/metro_line14.jpg" alt="Line 14" data-ph="Line 14"></div><figcaption>Line 14 &mdash; the one always glancing at Line 2.</figcaption></figure>
+        <figure class="mline"><div class="art sq"><img src="images/metro_line18.jpg" alt="Line 18" data-ph="Line 18"></div><figcaption>Line 18 &mdash; just finished the doctorate.</figcaption></figure>
+        <figure class="mline"><div class="art sq"><img src="images/metro_line16.jpg" alt="Line 16" data-ph="Line 16"></div><figcaption>Line 16 &mdash; reads fortunes by the planetarium.</figcaption></figure>
+        <figure class="mline"><div class="art sq"><img src="images/metro_line1.jpg" alt="Line 1" data-ph="Line 1"></div><figcaption>Line 1 &mdash; steady, like a mother.</figcaption></figure>
+        <figure class="mline"><div class="art sq"><img src="images/metro_line5.jpg" alt="Line 5" data-ph="Line 5"></div><figcaption>Line 5 &mdash; the daughter, always catching up.</figcaption></figure>
+      </div>
+      <p class="cap" style="max-width:52em;margin-top:16px;">I've loved the metro since I was little. The drawings are rough, and that's the point: each line's temperament comes from something small I saw on a platform, not from any skill with a brush.</p>
+    </div>
 
-      <div class="lr" style="margin-top:22px;">
-        <div class="art">
-          <img src="images/chem_personified.jpg" alt="Noble gases as characters" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=\'ph\'>⚗️</div>'">
-        </div>
-        <div class="txt">
-          <p class="lead">The Noble Gases</p>
-          <p>"They don't react because they're complete. Argon is the quiet kid in the back who already knows everything and never raises a hand. Helium is the one who talks too fast and floats away before you can answer."</p>
-          <p class="stage-caption">A whole family dinner: neon shows off, krypton broods, xenon plays the generous host. Their refusal to bond stops being a table fact and starts being a personality trait.</p>
+    <!-- CHEMISTRY -->
+    <div class="pw-block" id="chemistry">
+      <div class="pw-main" style="scroll-margin-top:76px;">
+        <h3>Chemistry</h3><span class="sub">a study sheet where the atoms have faces</span>
+      </div>
+      <div class="pw-h"><h3>Covalent Bonds, drawn like a comic</h3></div>
+      <p class="pw-intro">This is one page from my stack of subject notebooks &mdash; the chemistry one. I'd got tired of memorising the rules, so I turned covalent bonding into four small moves. The molecules got personalities along the way.</p>
+      <div class="lr" style="margin-top:16px;align-items:stretch;">
+        <div class="art" style="max-width:30em;border-radius:12px;"><img src="images/chem_covalent.jpg" alt="Drawing Covalent Compounds &amp;#8212; hand-drawn study note" data-ph="covalent bonding &amp;#8212; hand-drawn note"></div>
+        <div class="chem-text" style="font-size:.92rem;color:#4a4236;line-height:1.7;">
+          <p style="margin-bottom:9px;">To draw a covalent bond, all you need are four steps. <b>One</b>: count the total valence electrons. <b>Two</b>: decide which atom sits in the middle. <b>Three</b>: draw the bonds. <b>Four</b>: check the octet rule.</p>
+          <p style="margin-bottom:9px;">I added examples of single, double and triple bonds &mdash; H&#8322;, O&#8322; and N&#8322; &mdash; and gave the shared electrons their own little circles, because a bond looks much friendlier when you can see the pair.</p>
+          <p style="margin-bottom:9px;">Then the characters snuck in. The little girl in the crown is HNO&#8323;: she explains how nitric acid holds together. The cool boy in the trench coat is HCl, demoing the bonding rule. While I was at it, they show why atoms in periods 1 and 2 must satisfy the octet &mdash; and why period 3 and beyond get to bend it.</p>
+          <p style="margin-bottom:0;">And whatever you do, don't miss the red slogan in the bottom-left corner: <b style="color:#a52a2a;">"stable is goal."</b> Because in the end, that's what every molecule is chasing. I hope you like the sheet. Stay stable &#128522;</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== STAGE & FICTION (舞台创作) ===== -->
+<!-- ===== STAGE & FICTION ===== -->
 <section id="stage">
   <div class="container">
-    <div class="sec-head"><h2>Stage &amp; Fiction</h2><span class="sub">testing ideas where an audience can boo or laugh</span></div>
+    <div class="sec-head"><h2>Stage &amp; Fiction</h2><span class="sub">Grade 11 &middot; 2025&ndash;2026</span></div>
 
-    <div class="proj">
-      <div class="proj-title-row">
-        <h3>Theatre — running a troupe, directing what I write</h3>
-        <a class="back" href="#stage">← back to section</a>
-      </div>
-      <div class="meta"><span>2024–2026</span><span>20+ members</span><span>writer · director · actor</span></div>
-      <div class="origin"><span class="lbl">Why</span>"I once made two characters say the exact same line but breathe it differently. The room split. That's pragmatics — meaning lives in the pause, not the word. You can't prove that in an essay. You can prove it at 9pm on a sticky floor."</div>
-      <div class="field"><span class="label">What</span><div class="content">Led a 20+ member drama club: wrote and directed original dystopian plays about language and power, and acted in them too. Rehearsals are where I check whether my theories survive contact with a real, tired, laughing audience.</div></div>
-      <div class="field"><span class="label">Outcome</span><div class="content">Three original short plays staged, plus a 60‑second recommendation clip from my drama teacher. The troupe now runs partly on its own.</div></div>
-      <div class="field"><span class="label">Reflection &amp; Next</span><div class="content">Writing a longer piece where the script itself is a constructed language — the audience has to infer meaning from tone and gesture before any translation appears.</div></div>
+    <div class="pw-h" style="margin:0 0 4px;"><span class="pw-n">Theatre</span><h3>G11 &nbsp;·&nbsp; 20+ members &nbsp;·&nbsp; writer, director, actor &nbsp;·&nbsp; English script</h3></div>
+    <p class="pw-intro" style="margin-bottom:10px;">Meaning isn't encoded &mdash; it's something people do together. Putting personified grammar on a stage was the quickest way to test whether a mark's "temper" could hold up in a room. Grade 11, 2025&ndash;2026: I wrote, directed and acted as drama-club president; a staged reading of the grammar characters went to the district festival, and the club was named best school club of the year.</p>
+    <div class="wwn" style="margin:14px 0 4px;"><div class="w"><span class="wn">Why</span><p>I once made two characters say the exact same line but breathe it differently. The room split. That's pragmatics &mdash; meaning lives in the pause, not the word. You can't prove that in an essay; you can prove it at 9pm on a sticky floor.</p></div><div class="w"><span class="wn">What I did</span><p>Wrote and directed original pieces about language and power, and acted in them. Rehearsals are where I check whether my theories survive contact with a real, tired, laughing audience.</p></div><div class="w"><span class="wn">What I take away</span><p>The best pauses weren't mine. A missed cue or a laugh from the cast landed harder than anything I'd blocked. The abstraction stopped being mine alone.</p></div><div class="w"><span class="wn">Next</span><p>A longer run, with the audience's reactions written back into the script.</p></div></div>
 
-      <div class="stage-grid">
-        <div class="mb"><div class="cap">IMG · rehearsal still → <code>stage_rehearsal.jpg</code></div></div>
-        <div class="mb"><video controls preload="metadata"><source src="videos/stage_teacher_rec.mp4" type="video/mp4">browser doesn't support video</video><div class="cap">VIDEO · 60″ teacher recommendation → <code>stage_teacher_rec.mp4</code></div></div>
-        <div class="mb"><div class="cap">IMG · curtain call → <code>stage_curtain.jpg</code></div></div>
+    <div class="poster-row">
+      <figure class="poster-card"><div class="art stage-fig poster"><img src="images/stage_poster1.jpg" alt="Poster 1 &mdash; The Power of Care" data-ph="poster &mdash; The Power of Care"></div></figure>
+      <figure class="poster-card"><div class="art stage-fig poster"><img src="images/stage_poster2.jpg" alt="Poster 2 &mdash; The Power of Care, second pass" data-ph="poster &mdash; second pass"></div></figure>
+    </div>
+
+    <div class="stage-grid">
+      <figure><div class="art stage-fig show"><img src="images/stage_show1.jpg" alt="On stage 1" data-ph="on stage 1"></div><figcaption><b>Show 1.</b> Opening night &mdash; the cast finds its rhythm.</figcaption></figure>
+      <figure><div class="art stage-fig show"><img src="images/stage_show2.jpg" alt="On stage 2" data-ph="on stage 2"></div><figcaption><b>Show 2.</b> A missed cue that somehow made the scene.</figcaption></figure>
+      <figure><div class="art stage-fig show"><img src="images/stage_show3.jpg" alt="On stage 3" data-ph="on stage 3"></div><figcaption><b>Show 3.</b> Bows, and the bit the audience talked about after.</figcaption></figure>
+      <figure><div class="art stage-fig show"><img src="images/stage_rehearsal.jpg" alt="Rehearsal still" data-ph="rehearsal still"></div><figcaption><b>Rehearsal.</b> Working the pauses before the lines.</figcaption></figure>
+      <figure><div class="art stage-fig show"><img src="images/stage_curtain.jpg" alt="Curtain call" data-ph="curtain call"></div><figcaption><b>Curtain.</b> The part nobody blocked.</figcaption></figure>
+    </div>
+
+    <div class="stage-caption" style="border-left:3px solid var(--lgold);padding-left:13px;">Two posters, five shots from the stage. No video of the run exists &mdash; just the photographs and what the audience told us afterwards. Every missed cue, every pause that landed differently from how I'd blocked it: that was the habit live in a room, no longer mine to control.</div>
+
+    <div class="proj" style="margin-top:26px;">
+      <div class="pw-h" style="margin-top:34px !important;"><span class="pw-n">Novella</span><h3>Mirror-world novella &middot; <em>The Outsider</em></h3><span class="pw-sub">≈100,000 words &nbsp;·&nbsp; a utopia</span></div>
+      <div class="novella-text">
+        <p>Writing fiction is a kind of philosophy done through story. The spark comes from the "obviously right" ideas I keep meeting in real life &mdash; the ones everyone agrees with and no one questions. I turn them over and ask how they look from the edge: order against freedom, the one against the many, language against power.</p>
       </div>
-      <p class="stage-caption" style="margin-top:10px;">The stage is the only place I know where a misplaced breath counts as evidence.</p>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px;">
+        <button class="read-chip ghost" data-pdf="files/the_outsider.pdf" data-title="The Outsider &amp;#8212; mirror-world novella (≈100,000 words)">&#128274; read the novella &middot; <em>The Outsider</em></button>
+        <span class="note-line">embedded preview &middot; view only, no download</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== ORIGINAL MANUSCRIPT (手稿区 · 占位) ===== -->
-<section id="original-manuscript">
+<!-- ===== REFLECTIONS ===== -->
+<section id="reflections">
   <div class="container">
-    <div class="sec-head"><h2>Original Manuscript</h2><span class="sub">unpolished pages · still deciding whether they're finished</span></div>
-    <input type="checkbox" id="msToggle" class="more-toggle">
-    <label for="msToggle" class="more-label">this drawer is still open — peek at your own risk</label>
-    <div class="more-body">
-      <div class="proj" style="margin-bottom:0;">
-        <div class="origin"><span class="lbl">What this is</span>A folder for things that aren't presentable yet — draft fragments in Kulatish, worldbuilding scraps, half‑translated dialogues. They live here because the finished site would rather hide them, and I'd rather you see the seams.</div>
-        <div class="field"><span class="label">What's coming</span><div class="content">A short story written entirely in Kulatish with interlinear gloss; the "red sun / blue sun" dialogue; a scrap of the convergence tablet in the ancient script. Dropping pages as they stop embarrassing me.</div></div>
-        <div class="media">
-          <div class="mb"><div class="cap">IMG · manuscript page 01 (teaser) → <code>ms_page01.jpg</code></div></div>
-          <div class="mb"><div class="cap">IMG · glyph sketch, unfinished → <code>ms_glyph_sketch.jpg</code></div></div>
-        </div>
-        <p class="priv" style="border:none;background:transparent;padding:4px 0;">Deliberately incomplete. If it looks done, I rewrote the wrong thing.</p>
+    <div class="sec-head"><h2>Reflections</h2><span class="sub">three habits the work has taught me</span></div>
+    <p class="stage-caption" style="margin-top:6px;">Three habits I keep coming back to when a project stops going to plan.</p>
+    <div class="refl">
+      <div class="r">
+        <div class="n">01 &middot; assumptions I dropped</div>
+        <h4>The dialect trip is the clearest one.</h4>
+        <p>My first guess was that the dialect was cramping how people think. The recordings said otherwise. I followed the evidence, corrected the hypothesis, and saw the point: language is there to be understood. What a community cares about is being able to talk to one another, so a local dialect naturally leans toward the common tongue.</p>
+      </div>
+      <div class="r">
+        <div class="n">02 &middot; the project that changed me most</div>
+        <h4>Being understood matters more than being correct.</h4>
+        <p>The ward is where language stopped being a system I could take apart for fun. I still want to describe how meaning works &mdash; how a sign, a pause or a tone lands. But I now care just as much about who that meaning is working for, and whether the person on the other end can reach it.</p>
+      </div>
+      <div class="r">
+        <div class="n">03 &middot; what I'm still figuring out</div>
+        <h4>Colinta &mdash; difference is the point, a shared rule is the deal.</h4>
+        <p>Two threads stay live. One is the 25-sign board for Kulatish, which I'd like to turn into a working input method. The other is a plain-language drug leaflet I can actually send in. Same question underneath both: communication needs a common rule, or no one meets; it needs difference too, or there's nothing worth exchanging. Entropy isn't noise &mdash; it's the price of something being said at all.</p>
       </div>
     </div>
+    <p class="live">A working page &mdash; updated as the projects move on.</p>
   </div>
 </section>
 
-<!-- ===== ABOUT ===== -->
-<section id="about">
-  <div class="container">
-    <div class="sec-head"><h2>About</h2><span class="sub">the person behind the symbols</span></div>
-    <div class="abt">
-      <div class="abt-l">
-        <div class="cert"><img src="images/iolc_cert_1.jpg" alt="IOLC 2024" onerror="this.style.display='none';this.parentNode.innerHTML='🏆 IOLC Cert · 2024&lt;br&gt;(placeholder)'"></div>
-        <div class="cert"><img src="images/iolc_cert_2.jpg" alt="IOLC 2025" onerror="this.style.display='none';this.parentNode.innerHTML='🏆 IOLC Cert · 2025&lt;br&gt;(placeholder)'"></div>
-      </div>
-      <div class="abt-r">
-        <div class="bio">
-          <p>I'm a linguistics‑minded builder. I make languages, I sit in hospital wards, I argue with dialects, I redesign the labels people can't read, I draw punctuation marks, and I stage arguments about power. It's all the same question dressed differently.</p>
-          <p><strong>IOLC</strong> (International Linguistics Olympiad / IOLC China) — two years running, regional through advanced, merit award both years.</p>
-        </div>
-
-        <div class="course-grid">
-          <div class="course-col">
-            <h4>IB · subjects</h4>
-            <ul>
-              <li>Biology HL</li>
-              <li>Psychology HL</li>
-              <li>Theatre SL</li>
-              <li>English B HL · <em>The House on Mango Street</em></li>
-              <li>Math AA SL · memory curve</li>
-              <li>Chinese A Lit SL · the voiceless in <em>The Bluest Eye</em> &amp; <em>21 Grams</em></li>
-            </ul>
-          </div>
-          <div class="course-col">
-            <h4>Currently chasing</h4>
-            <ul>
-              <li>Spoken Kulatish sample</li>
-              <li>Dialect archive, Yushe 2027</li>
-              <li>Insert redesign · n=100 test</li>
-              <li>Personified zine, draft 1</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="contact-block">
-          <div class="contact-line"><span class="sym">✉</span><strong>email</strong><span class="val">[your.email@example.com]</span></div>
-          <div class="contact-line"><span class="sym">◎</span><strong>site note</strong><span class="val">deliberately rough at the edges — meet the thinking, not a brochure</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== DOWNLOADS ===== -->
+<!-- ===== ORIGINAL MANUSCRIPT (Downloads) ===== -->
 <section id="downloads">
   <div class="container">
-    <div class="sec-head"><h2>Downloads</h2><span class="sub">field notes you can take with you</span></div>
+    <div class="sec-head"><h2>Original Manuscript</h2><span class="sub">read-only preview &middot; no download</span></div>
     <div class="dl-grid">
       <div class="dl-card">
         <div class="ico">📘</div>
         <h4>Kulatish Grammar Manual</h4>
-        <p>All 12 chapters, appendices and index. 45 pages, print‑friendly.</p>
-        <a class="pdf-chip" href="files/kulatish_grammar.pdf" download><span class="ico">↓</span> kulatish_grammar.pdf</a>
+        <p>All 12 chapters, the 25-sign board and index. Working draft.</p>
+        <button class="read-chip" data-pdf="files/kulatish_grammar.pdf" data-title="Kulatish Grammar Manual &amp;#8212; 12 chapters, working draft">&#128065; read only</button>
       </div>
       <div class="dl-card">
-        <div class="ico">📓</div>
-        <h4>Aphasia Field Notes</h4>
-        <p>12 de‑identified sessions, gesture &amp; prosody log. Scans to come.</p>
-        <a class="pdf-chip" href="files/aphasia_notes.pdf" download><span class="ico">↓</span> aphasia_notes.pdf</a>
+        <div class="ico">🖋️</div>
+        <h4>Punctuation People &middot; an excerpt</h4>
+        <p>Punctuation People &mdash; selected chapters and the character bible. Partial draft.</p>
+        <button class="read-chip" data-pdf="files/punctuation_people.pdf" data-title="Punctuation People &amp;#8212; selected chapters, character bible">&#128065; read only</button>
       </div>
       <div class="dl-card">
-        <div class="ico">🗺️</div>
-        <h4>Yuxian Tone Log</h4>
-        <p>8 speakers, tone‑merger spreadsheet + short paper (Chinese).</p>
-        <a class="pdf-chip" href="files/yuxian_tonelog.pdf" download><span class="ico">↓</span> yuxian_tonelog.pdf</a>
+        <div class="ico">📖</div>
+        <h4>The Outsider &middot; the novella</h4>
+        <p>Mirror-world novella, ≈100,000 words. Utopia, told as an archive.</p>
+        <button class="read-chip ghost" data-pdf="files/the_outsider.pdf" data-title="The Outsider &amp;#8212; mirror-world novella (≈100,000 words)">&#128065; read only</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ME ===== -->
+<section id="about">
+  <div class="container">
+    <div class="sec-head"><h2>About Me</h2><span class="sub">grade 12, IB &middot; a lover of linguistics, building with it</span></div>
+    <div class="abt">
+      <div>
+        <div class="certs">
+          <div class="cert art cert-fig"><img src="images/iolc_cert_1.jpg" alt="IOLC certificate &mdash; round 1" data-ph="IOLC &mdash; round 1"></div>
+          <div class="cert art cert-fig"><img src="images/iolc_cert_2.jpg" alt="IOLC certificate &mdash; round 2" data-ph="IOLC &mdash; round 2"></div>
+        </div>
+        <p class="cap" style="margin-top:10px;"><b>IOLC</b> &mdash; International Linguistics Olympiad in China. </p>
+        <p class="cap" style="margin-top:8px;">I first met IOLC in grade 10 and was hooked at once &mdash; the problems read like codes to crack. I taught myself the material from scratch, sat the Junior Level, and came away with <b>Merit in both the National Individual and National Team rankings</b>. Five hours of written paper, not tired at all; just thoroughly enjoying it.</p>
+        <p class="cap" style="margin-top:8px;">In grade 11 I moved up to <b>Senior Level</b> and took <b>Merit in the National Team</b> ranking.</p>
+        <p class="cap" style="margin-top:8px;">IOLC is where my interest in linguistics began, and one reason I went on to build a language of my own and to keep watching the real-world questions around how people use language. I've just entered the <b>Senior Level</b> for the 2027 round, sitting next March.</p>
+      </div>
+      <div>
+        <div class="bio">
+          <p>Between symbols, linguistic energy thrives. Differences and uncertainty enliven while raising communication's entropy. 
+I am Karl from Shanghai, exploring linguistics, psychology, cognitive science, or philosophy, hoping to better understand people.</p>
+        </div>
+        <div class="course-grid" style="margin-top:16px;">
+          <h4>IB subjects &amp; IA / IO &middot; status</h4>
+          <ul>
+            <li><b>Psychology HL</b> &mdash; <em>IA</em>: do emotional words stick better than neutral ones? <span class="stt stt-draft">drafting</span></li>
+            <li><b>Chinese A: Lit SL</b> &mdash; <em>IO</em>: symbols and aphasia in literature <span class="stt stt-done">defended</span></li>
+            <li><b>Math AA SL</b> &mdash; <em>IA</em>: the memory curve of English vocabulary <span class="stt stt-done">first draft done</span></li>
+            <li><b>Biology HL</b> &mdash; <em>IA</em>: how macromolecule solutions affect soybean growth <span class="stt stt-wip">experimenting</span></li>
+            <li><b>English B HL</b> &mdash; <em>IA</em>: a critical response to an English novel <span class="stt stt-hold">not started</span></li>
+            <li><b>Theatre SL</b> &mdash; <em>solo</em>: a 4,000-word original script <span class="stt stt-draft">writing</span></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -617,18 +677,55 @@
 
 <footer>
   <div class="container">
-    <p>© 2026 Kulatish · Between Symbols — field notes, rough drafts, and questions I haven't finished.</p>
+    <p>Karl · 2026 · all work original &nbsp;·&nbsp; <a href="mailto:apilaorikloria@126.com">apilaorikloria@126.com</a></p>
+    <p style="margin-top:6px;font-style:italic;">The address is Kulatish too — between symbols, language grows.</p>
   </div>
 </footer>
 
+<!-- ===== PDF READER (embedded, read-only) ===== -->
+<div class="pdf-frame" id="pdfFrame">
+  <div class="pdf-box">
+    <div class="bar"><span><b id="pdfTitle">manuscript</b> &nbsp;&middot;&nbsp; embedded preview, read-only</span><span class="hint">your browser's PDF viewer &middot; close to return to the page</span></div>
+    <iframe id="pdfIframe" src="" title="manuscript preview"></iframe>
+    <div class="bar" style="background:#f3eadc;"><button id="pdfClose">&#10005; close reader</button><span class="hint">not available for download from this site</span></div>
+  </div>
+</div>
+
 <script>
-  function toggleAllGrammar(){
-    var details = document.querySelectorAll('#grammarGrid details');
-    var anyClosed = Array.prototype.some.call(details, function(d){ return !d.open; });
-    details.forEach(function(d){ d.open = anyClosed; });
-    var btn = document.querySelector('.grammar-toggle-all-btn');
-    if(btn) btn.textContent = anyClosed ? '▾ collapse all 12 chapters' : '▸ expand all 12 chapters';
-  }
+(function(){
+  /* placeholder fallback: shown when an image is missing or fails to load */
+  document.querySelectorAll('[data-ph]').forEach(function(el){
+    if(el.tagName==='IMG'){
+      var ph=function(){
+        if(el.parentNode.querySelector('.ph')) return;
+        var d=document.createElement('div'); d.className='ph';
+        d.innerHTML=el.getAttribute('data-phhtml')||el.getAttribute('data-ph')||'&mdash;';
+        el.parentNode.insertBefore(d,el.nextSibling);
+      };
+      el.addEventListener('error',ph);
+      if(el.complete && el.naturalWidth===0) ph();
+    } else {
+      var d=document.createElement('div'); d.className='ph';
+      d.innerHTML=el.getAttribute('data-phhtml')||el.getAttribute('data-ph')||'&mdash;';
+      el.appendChild(d);
+    }
+  });
+
+  /* PDF reader: embedded preview only, never a download */
+  var frame=document.getElementById('pdfFrame'),
+      ifr=document.getElementById('pdfIframe'),
+      ttl=document.getElementById('pdfTitle');
+  document.querySelectorAll('.read-chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var f=b.getAttribute('data-pdf'), t=b.getAttribute('data-title')||'manuscript';
+      ifr.src=f; ttl.innerHTML=t; frame.classList.add('on'); document.body.style.overflow='hidden';
+    });
+  });
+  function closeR(){ frame.classList.remove('on'); ifr.src=''; document.body.style.overflow=''; }
+  document.getElementById('pdfClose').addEventListener('click',closeR);
+  frame.addEventListener('click',function(e){ if(e.target===frame) closeR(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeR(); });
+})();
 </script>
 </body>
 </html>
